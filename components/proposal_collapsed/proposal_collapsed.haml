@@ -3,7 +3,7 @@
     {{proposal.name}}.
     %proposal_closing_time{proposal: "proposal"}.
   .screen-only.proposal-collapsed__flex{aria-hidden: "true"}
-    %pie_with_position{proposal: "proposal"}
+    %outlet{name: "proposal-preview-large", model: "proposal"}
     .proposal-collapsed__body
       .proposal-collapsed__title
         {{proposal.name}}

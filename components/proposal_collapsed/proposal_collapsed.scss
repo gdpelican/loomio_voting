@@ -7,7 +7,7 @@
 }
 
 .proposal-collapsed__flex {
-  display: flex;
+  @include displayFlex;
 }
 
 .proposal-collapsed__body {

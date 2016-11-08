@@ -1,7 +1,7 @@
 angular.module('loomioApp').directive 'positionButtonsPanel', ->
   scope: {proposal: '='}
   restrict: 'E'
-  templateUrl: 'generated/components/thread_page/position_buttons_panel/position_buttons_panel.html'
+  templateUrl: 'generated/components/position_buttons_panel/position_buttons_panel.html'
   replace: true
   controller: ($scope, ModalService, VoteForm, Session, Records, AbilityService) ->
 
