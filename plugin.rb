@@ -3,6 +3,7 @@ module Plugins
     class Plugin < Plugins::Base
       setup! :loomio_voting do |plugin|
         plugin.enabled = true
+        plugin.use_class 'app/models/votes/loomio'
         plugin.register_proposal_kind :loomio,
           expanded:        :proposal_expanded,
           collapsed:       :proposal_collapsed,
