@@ -1,0 +1,39 @@
+- content_for 'motion_preview' do
+  - colours = [ "00D177", "F6A82B", "F96168", "CE261B", 'cccccc'].join('|')
+  %img.thread-mailer__motion-pie-icon{src: URI.escape("https://chart.googleapis.com/chart?cht=p&chma=0,0,0,0|0,0&chs=100x100&chd=t:#{motion_sparkline(@motion)}&chco=#{colours}")}
+
+- content_for 'motion_votes' do
+  - @motion.grouped_unique_votes.each do |vote|
+    %tr
+      %td
+        = image_tag "thread_mailer/vote-icon-#{vote.stance['position']}.png", alt: "#{vote.stance['position']} icon", class: "thread-mailer__vote-icon"
+      %td= vote.user_name
+      %td= render_rich_text(vote.statement)
+
+- content_for 'motion_voting' do
+  %table.thread-mailer__vote-buttons
+    %tr
+      %td.thread-mailer__vote-button
+        = link_to(motion_url(@motion, @utm_hash.merge(position: :yes)), class: 'thread-mailer__vote-button-link') do
+          = image_tag("thread_mailer/vote-button-yes.png", alt: t(:"vote_button_alt_text.yes"))
+          %br
+          .thread-mailer__vote-button-verb
+            = t(:"position_verbs.yes").capitalize
+      %td.thread-mailer__vote-button
+        = link_to(motion_url(@motion, @utm_hash.merge(position: :abstain)), class: 'thread-mailer__vote-button-link') do
+          = image_tag("thread_mailer/vote-button-abstain.png", alt: t(:"vote_button_alt_text.abstain"))
+          %br
+          .thread-mailer__vote-button-verb
+            = t(:"position_verbs.abstain").capitalize
+      %td.thread-mailer__vote-button
+        = link_to(motion_url(@motion, @utm_hash.merge(position: :no)), class: 'thread-mailer__vote-button-link') do
+          = image_tag("thread_mailer/vote-button-no.png", alt: t(:"vote_button_alt_text.no"))
+          %br
+          .thread-mailer__vote-button-verb
+            = t(:"position_verbs.no").capitalize
+      %td.thread-mailer__vote-button
+        = link_to(motion_url(@motion, @utm_hash.merge(position: :block)), class: 'thread-mailer__vote-button-link') do
+          = image_tag("thread_mailer/vote-button-block.png", alt: t(:"vote_button_alt_text.block"))
+          %br
+          .thread-mailer__vote-button-verb
+            = t(:"position_verbs.block").capitalize

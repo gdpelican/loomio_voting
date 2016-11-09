@@ -4,10 +4,9 @@ module Plugins
       setup! :loomio_voting do |plugin|
         plugin.enabled = true
         plugin.use_class 'app/models/votes/loomio'
-        plugin.use_view_path :views, controller: ThreadMailer
+        plugin.use_view_path 'app/views', controller: ThreadMailer
         plugin.register_proposal_kind :loomio,
           expanded:        :proposal_expanded,
-          collapsed:       :proposal_collapsed,
           vote_form:       :proposal_vote_options,
           preview_large:   :thread_preview_pie,
           preview_small:   :pie_chart
