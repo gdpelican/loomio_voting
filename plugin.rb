@@ -6,7 +6,7 @@ module Plugins
         plugin.use_class 'app/models/votes/loomio'
         plugin.use_view_path 'app/views', controller: ThreadMailer
         plugin.register_proposal_kind :loomio,
-          expanded:        :proposal_expanded,
+          proposal:        :loomio_proposal,
           vote_form:       :proposal_vote_options,
           preview_large:   :thread_preview_pie,
           preview_small:   :pie_chart
