@@ -41,4 +41,4 @@ angular.module('loomioApp').directive 'loomioProposal', ->
       $scope.select position, myVote.statement
 
     $scope.select = (position) ->
-      ModalService.open(VoteForm, vote: -> Records.votes.build(proposalId: $scope.proposal.id, position: position))
+      ModalService.open(VoteForm, vote: -> Records.votes.build(proposalId: $scope.proposal.id, stance: {position: position}))
